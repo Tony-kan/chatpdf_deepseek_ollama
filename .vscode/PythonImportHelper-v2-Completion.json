@@ -16,19 +16,11 @@
         "documentation": {}
     },
     {
-        "label": "InMemoryVectorStore",
-        "importPath": "langchain_core.vectorstores",
-        "description": "langchain_core.vectorstores",
-        "isExtraImport": true,
-        "detail": "langchain_core.vectorstores",
-        "documentation": {}
-    },
-    {
         "label": "FAISS",
-        "importPath": "langchain_core.vectorstores",
-        "description": "langchain_core.vectorstores",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
         "isExtraImport": true,
-        "detail": "langchain_core.vectorstores",
+        "detail": "langchain_community.vectorstores",
         "documentation": {}
     },
     {
@@ -56,6 +48,24 @@
         "documentation": {}
     },
     {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "main",
+        "description": "main",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "upload_pdf",
         "kind": 2,
         "importPath": "main",
@@ -74,11 +84,11 @@
         "documentation": {}
     },
     {
-        "label": "retriev_docs",
+        "label": "retrieve_docs",
         "kind": 2,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def retriev_docs(db,query,k=4):\n    print(db.similarity_search(query))\n    return db.similarity_search(query,k)\ndef question_pdf(question,documents):\n    context = \"\\n\\n\".join([doc.page_content for doc in documents])\n    prompt = ChatPromptTemplate.from_template(template)\n    chain = prompt | model\n    return chain.invoke({\"question\": question, \"context\": context})",
+        "peekOfCode": "def retrieve_docs(db,query,k=4):\n    print(db.similarity_search(query))\n    return db.similarity_search(query,k)\ndef question_pdf(question,documents):\n    context = \"\\n\\n\".join([doc.page_content for doc in documents])\n    prompt = ChatPromptTemplate.from_template(template)\n    chain = prompt | model\n    return chain.invoke({\"question\": question, \"context\": context})",
         "detail": "main",
         "documentation": {}
     },
@@ -96,7 +106,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "pdf_directory = \"pdfs/\"\nembeddings = OllamaEmbeddings(model=\"deepseek-r1:7.6b\")\nmodel = OllamaLLM(\n    model=\"deepseek-r1:7.6b\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}",
+        "peekOfCode": "pdf_directory = \"pdfs/\"\nembeddings = OllamaEmbeddings(model=\"deepseek-r1:latest\")\nmodel = OllamaLLM(\n    model=\"deepseek-r1:latest\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}",
         "detail": "main",
         "documentation": {}
     },
@@ -105,7 +115,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "embeddings = OllamaEmbeddings(model=\"deepseek-r1:7.6b\")\nmodel = OllamaLLM(\n    model=\"deepseek-r1:7.6b\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}\nContext: {context}",
+        "peekOfCode": "embeddings = OllamaEmbeddings(model=\"deepseek-r1:latest\")\nmodel = OllamaLLM(\n    model=\"deepseek-r1:latest\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}\nContext: {context}",
         "detail": "main",
         "documentation": {}
     },
@@ -114,7 +124,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "model = OllamaLLM(\n    model=\"deepseek-r1:7.6b\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}\nContext: {context}\nAnswer:",
+        "peekOfCode": "model = OllamaLLM(\n    model=\"deepseek-r1:latest\",\n    temperature=0)\ntemplate = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}\nContext: {context}\nAnswer:",
         "detail": "main",
         "documentation": {}
     },
@@ -125,6 +135,15 @@
         "description": "main",
         "peekOfCode": "template = \"\"\"\nYou are an assistant that answers questions. Using the following retrieved information, answer the user\nquestion. If  you don't know the answer, say that you don't know, don't try to make up an answer.\nUse up to three sentences, keeping the answer brief and concise.\nQuestion: {question}\nContext: {context}\nAnswer:\n\"\"\"\ndef upload_pdf(file):\n    \"\"\"",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "uploaded_file",
+        "kind": 5,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "peekOfCode": "uploaded_file = st.file_uploader(\"Choose a PDF file\", type=\"pdf\",accept_multiple_files=False)\nif uploaded_file:\n    main.upload_pdf(uploaded_file)\n    db = main.create_vector_store(main.pdf_directory + uploaded_file.name)\n    question = st.chat_input(\"Ask a question\")\n    if question:\n        st.chat_message(\"user\").write(question)\n        related_documents = main.retrieve_docs(db,question)\n        answer = main.question_pdf(question,related_documents)\n        st.chat_message(\"assistant\").write(answer)",
+        "detail": "streamlit",
         "documentation": {}
     }
 ]

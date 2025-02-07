@@ -1,6 +1,7 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.vectorstores import  InMemoryVectorStore, FAISS
+# from langchain_core.vectorstores import  InMemoryVectorStore, FAISS
+from langchain_community.vectorstores import  FAISS
 from langchain_ollama import OllamaEmbeddings
 from langchain_ollama.llms import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
@@ -8,10 +9,10 @@ from langchain_core.prompts import ChatPromptTemplate
 pdf_directory = "pdfs/"
 
 
-embeddings = OllamaEmbeddings(model="deepseek-r1:7.6b")
+embeddings = OllamaEmbeddings(model="deepseek-r1:latest")
 
 model = OllamaLLM(
-    model="deepseek-r1:7.6b",
+    model="deepseek-r1:latest",
     temperature=0)
 
 template = """
@@ -56,7 +57,7 @@ def create_vector_store(file_path):
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=2000,
         chunk_overlap=300,
-        add_starting_index=True
+        length_function=len
           )
     
     chunked_docs = text_splitter.split_documents(documents)
@@ -64,7 +65,7 @@ def create_vector_store(file_path):
     return db
 
 
-def retriev_docs(db,query,k=4):
+def retrieve_docs(db,query,k=4):
     print(db.similarity_search(query))
     return db.similarity_search(query,k)
 
