@@ -1,6 +1,6 @@
 # ChatWithPDF App
 
-# OverView :
+## Overview
 
 ChatWithPDF :an application leveraging the power of LangChain, DeepSeek-R1, and Streamlit to provide an interactive and intelligent way to chat with PDF documents.
 
@@ -36,8 +36,8 @@ We welcome contributions! Please fork the repository and submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://opensource.org/license/MIT) .
 
 ## Contact
 
-For any questions or feedback, please contact [your email].
+For any questions or feedback, please contact tonykanyamuka@gmail.com or tonykanyamuka@icloud.com
